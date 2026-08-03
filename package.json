@@ -1,0 +1,51 @@
+{
+  "name": "language-html",
+  "author": "lumine-code",
+  "version": "1.0.0",
+  "main": "lib/main",
+  "description": "HTML language support.",
+  "keywords": [
+    "erb",
+    "ejs",
+    "xhtml",
+    "tree-sitter"
+  ],
+  "engines": {
+    "atom": "*",
+    "node": ">=14"
+  },
+  "repository": "https://github.com/lumine-code/language-html",
+  "license": "MIT",
+  "dependencies": {
+    "atom-grammar-test": "^0.6.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^18.2.2",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.6"
+  },
+  "consumedServices": {
+    "hyperlink.injection": {
+      "versions": {
+        "^1.0.0": "consumeHyperlinkInjection"
+      }
+    },
+    "todo.injection": {
+      "versions": {
+        "^1.0.0": "consumeTodoInjection"
+      }
+    }
+  },
+  "bugs": {
+    "url": "https://github.com/lumine-code/language-html/issues"
+  },
+  "scripts": {
+    "test": "lumine --test spec",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  }
+}
