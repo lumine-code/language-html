@@ -10,6 +10,10 @@ HTML language support.
 - **Code folding**: collapse elements and comments.
 - **Comment toggling**: block comment support.
 
+## Installation
+
+To install `language-html` search for _language-html_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/language-html`.
+
 ## Services
 
 - **hyperlink.injection** (`^1.0.0`): consumed to highlight URLs inside markup as clickable links.
