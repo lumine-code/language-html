@@ -1,7 +1,7 @@
 {
   "name": "ERB",
   "scopeName": "text.html.erb",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "parser": "tree-sitter-embedded-template",
   "fileTypes": ["erb", "html.erb"],
   "injectionRegex": "^(erb|ERB)$",

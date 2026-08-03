@@ -1,7 +1,7 @@
 {
   "name": "EJS",
   "scopeName": "text.html.ejs",
-  "type": "modern-tree-sitter",
+  "type": "tree-sitter",
   "parser": "tree-sitter-embedded-template",
   "fileTypes": ["ejs", "html.ejs"],
   "injectionRegex": "^(ejs|EJS)$",
