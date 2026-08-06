@@ -164,9 +164,7 @@ module.exports = function runSyntaxTest(filePath) {
         for (const assertion of contentLine.assertions) {
           const segment = segments.find((s) => s.matches(assertion.column));
           expect(segment)
-            .withContext(
-              `no token at column ${assertion.column} of line ${contentLine.lineNumber}`,
-            )
+            .withContext(`no token at column ${assertion.column} of line ${contentLine.lineNumber}`)
             .toBeTruthy();
 
           for (const expected of assertion.scopes) {
