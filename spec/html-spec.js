@@ -1,5 +1,5 @@
 const path = require("path");
-const grammarTest = require("atom-grammar-test");
+const runSyntaxTest = require("./syntax-test");
 
 describe("TextMate HTML grammar", function () {
   let grammar = null;
@@ -935,8 +935,8 @@ describe("TextMate HTML grammar", function () {
       });
     }));
 
-  grammarTest(path.join(__dirname, "fixtures/syntax_test_html.html"));
-  grammarTest(path.join(__dirname, "fixtures/syntax_test_html_template_fragments.html"));
+  runSyntaxTest(path.join(__dirname, "fixtures/syntax_test_html.html"));
+  runSyntaxTest(path.join(__dirname, "fixtures/syntax_test_html_template_fragments.html"));
 
   describe("attributes", function () {
     it("recognizes a single attribute with a quoted value", function () {
