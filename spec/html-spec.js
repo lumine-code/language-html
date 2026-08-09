@@ -5,11 +5,11 @@ describe("TextMate HTML grammar", function () {
   let grammar = null;
 
   beforeEach(function () {
-    atom.config.set("language.useTreeSitterParsers", false);
+    lumine.config.set("language.useTreeSitterParsers", false);
 
-    waitsForPromise(() => atom.packages.activatePackage("language-html"));
+    waitsForPromise(() => lumine.packages.activatePackage("language-html"));
 
-    runs(() => (grammar = atom.grammars.grammarForScopeName("text.html.basic")));
+    runs(() => (grammar = lumine.grammars.grammarForScopeName("text.html.basic")));
   });
 
   it("parses the grammar", function () {
@@ -18,7 +18,7 @@ describe("TextMate HTML grammar", function () {
   });
 
   describe("style tags", function () {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage("language-css")));
+    beforeEach(() => waitsForPromise(() => lumine.packages.activatePackage("language-css")));
 
     it("tokenizes the tag attributes", function () {
       const lines = grammar.tokenizeLines(`\
@@ -648,7 +648,7 @@ describe("TextMate HTML grammar", function () {
 
   describe("CoffeeScript script tags", function () {
     beforeEach(() =>
-      waitsForPromise(() => atom.packages.activatePackage("language-coffee-script")),
+      waitsForPromise(() => lumine.packages.activatePackage("language-coffee-script")),
     );
 
     it("tokenizes the content inside the tag as CoffeeScript", function () {
@@ -775,7 +775,7 @@ describe("TextMate HTML grammar", function () {
   });
 
   describe("JavaScript script tags", function () {
-    beforeEach(() => waitsForPromise(() => atom.packages.activatePackage("language-javascript")));
+    beforeEach(() => waitsForPromise(() => lumine.packages.activatePackage("language-javascript")));
 
     it("tokenizes the content inside the tag as JavaScript", function () {
       const lines = grammar.tokenizeLines(`\
@@ -1557,7 +1557,7 @@ describe("TextMate HTML grammar", function () {
 
     describe("the 'style' attribute", function () {
       let quote, type;
-      beforeEach(() => waitsForPromise(() => atom.packages.activatePackage("language-css")));
+      beforeEach(() => waitsForPromise(() => lumine.packages.activatePackage("language-css")));
 
       const quotes = {
         '"': "double",
@@ -3173,12 +3173,12 @@ _vi: se filetype=HTML:
     let snippetsModule = null;
 
     beforeEach(function () {
-      // FIXME: This should just be atom.packages.loadPackage('snippets'),
+      // FIXME: This should just be lumine.packages.loadPackage('snippets'),
       // but a bug in PackageManager::resolvePackagePath where it finds language-html's
       // `snippets` directory before the actual package necessitates passing an absolute path
       // See https://github.com/atom/atom/issues/15953
-      const snippetsPath = path.join(atom.packages.resourcePath, "node_modules", "snippets");
-      snippetsModule = require(atom.packages.loadPackage(snippetsPath).getMainModulePath());
+      const snippetsPath = path.join(lumine.packages.resourcePath, "node_modules", "snippets");
+      snippetsModule = require(lumine.packages.loadPackage(snippetsPath).getMainModulePath());
 
       // Disable loading of user snippets before the package is activated
       spyOn(snippetsModule, "loadUserSnippets").andCallFake((callback) => callback({}));

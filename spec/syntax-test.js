@@ -18,7 +18,7 @@
 // built below. A scope matches when it agrees segment by segment as far as the
 // shorter of the two runs, so `source.js` is satisfied by `source.js.embedded`.
 //
-// Replaces the archived atom-grammar-test, which implemented the same format
+// Replaces the archived lumine-grammar-test, which implemented the same format
 // through a chevrotain grammar. Only the two position markers these fixtures use
 // are supported; anything else fails loudly rather than being skipped.
 
@@ -130,7 +130,7 @@ module.exports = function runSyntaxTest(filePath) {
     let grammar = null;
 
     beforeEach(function () {
-      grammar ??= atom.grammars.grammarForScopeName(scopeName);
+      grammar ??= lumine.grammars.grammarForScopeName(scopeName);
       expect(grammar).toBeTruthy();
     });
 
