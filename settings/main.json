@@ -3,7 +3,7 @@
     "autocomplete": {
       "extraWordCharacters": "-"
     },
-    "language": {
+    "editor": {
       "commentStart": "<!-- ",
       "commentEnd": " -->",
       "commentDelimiters": {
