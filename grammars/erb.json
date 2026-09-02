@@ -1,0 +1,16 @@
+{
+  "name": "ERB",
+  "scopeName": "text.html.erb",
+  "type": "tree-sitter",
+  "parser": "tree-sitter-embedded-template",
+  "fileTypes": ["erb", "html.erb", "rhtml"],
+  "injectionNames": ["erb"],
+  "treeSitter": {
+    "parserSource": "github:tree-sitter/tree-sitter-embedded-template#v0.25.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "grammar": "embedded-template.wasm",
+    "highlightsQuery": "erb-highlights.scm",
+    "foldsQuery": "erb-folds.scm",
+    "indentsQuery": "erb-indents.scm"
+  }
+}

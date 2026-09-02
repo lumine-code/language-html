@@ -1,0 +1,16 @@
+{
+  "name": "EJS",
+  "scopeName": "text.html.ejs",
+  "type": "tree-sitter",
+  "parser": "tree-sitter-embedded-template",
+  "fileTypes": ["ejs", "html.ejs"],
+  "injectionNames": ["ejs"],
+  "treeSitter": {
+    "parserSource": "github:tree-sitter/tree-sitter-embedded-template#v0.25.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "grammar": "embedded-template.wasm",
+    "highlightsQuery": "ejs-highlights.scm",
+    "foldsQuery": "ejs-folds.scm",
+    "indentsQuery": "ejs-indents.scm"
+  }
+}

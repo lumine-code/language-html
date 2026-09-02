@@ -4,7 +4,7 @@ HTML language support.
 
 ## Features
 
-- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-embedded-template](https://github.com/tree-sitter/tree-sitter-embedded-template) and [tree-sitter-html](https://github.com/tree-sitter/tree-sitter-html) and TextMate grammars derived from [atom/language-html](https://github.com/atom/language-html).
+- **Grammars**: provides Tree-sitter grammars built from [tree-sitter-embedded-template](https://github.com/tree-sitter/tree-sitter-embedded-template) and [tree-sitter-html](https://github.com/tree-sitter/tree-sitter-html).
 - **Syntax highlighting**: full grammar coverage for HTML files.
 - **Snippets**: shortcuts for common tags and document scaffolding.
 - **Code folding**: collapse elements and comments.
