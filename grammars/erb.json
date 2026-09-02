@@ -7,7 +7,7 @@
   "injectionNames": ["erb"],
   "treeSitter": {
     "parserSource": "github:tree-sitter/tree-sitter-embedded-template#v0.25.0",
-    "wasmBuildTool": "tree-sitter-cli#v0.26.13",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "embedded-template.wasm",
     "highlightsQuery": "erb-highlights.scm",
     "foldsQuery": "erb-folds.scm",
