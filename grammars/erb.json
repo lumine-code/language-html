@@ -4,7 +4,7 @@
   "type": "tree-sitter",
   "parser": "tree-sitter-embedded-template",
   "fileTypes": ["erb", "html.erb", "rhtml"],
-  "injectionNames": ["erb"],
+  "injectionNames": ["erb", "html+ruby", "rhtml"],
   "treeSitter": {
     "parserSource": "github:tree-sitter/tree-sitter-embedded-template#v0.25.0",
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
