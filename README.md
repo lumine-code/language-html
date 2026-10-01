@@ -14,10 +14,10 @@ HTML language support.
 
 To install `language-html` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-html`.
 
-## Services
+## Injections
 
-- `hyperlink.injection`: consumed to highlight URLs inside markup as clickable links.
-- `todo.injection`: consumed to highlight `TODO`-style markers inside comments.
+- Static Tree-sitter injections highlight URLs with `language-hyperlink`.
+- Static Tree-sitter injections highlight comment markers with `language-todo`.
 
 ## Contributing
 

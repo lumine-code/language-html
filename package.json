@@ -2,10 +2,8 @@
   "name": "language-html",
   "author": "lumine-code",
   "version": "1.0.0",
-  "main": "lib/main",
   "files": [
     "grammars",
-    "lib",
     "settings",
     "snippets",
     "spec"
@@ -30,18 +28,6 @@
     "eslint-plugin-n": "^18.4.0",
     "globals": "^17.12.0",
     "prettier": "^3.9.9"
-  },
-  "consumedServices": {
-    "hyperlink.injection": {
-      "versions": {
-        "^1.0.0": "consumeHyperlinkInjection"
-      }
-    },
-    "todo.injection": {
-      "versions": {
-        "^1.0.0": "consumeTodoInjection"
-      }
-    }
   },
   "bugs": {
     "url": "https://github.com/lumine-code/language-html/issues"
