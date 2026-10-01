@@ -10,6 +10,7 @@
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "embedded-template.wasm",
     "highlightsQuery": "ejs-highlights.scm",
+    "injectionsQuery": "ejs-injections.scm",
     "foldsQuery": "ejs-folds.scm",
     "indentsQuery": "ejs-indents.scm"
   }

@@ -10,6 +10,7 @@
     "wasmBuildTool": "tree-sitter-cli#v0.27.0",
     "grammar": "embedded-template.wasm",
     "highlightsQuery": "erb-highlights.scm",
+    "injectionsQuery": "erb-injections.scm",
     "foldsQuery": "erb-folds.scm",
     "indentsQuery": "erb-indents.scm"
   }

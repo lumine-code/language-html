@@ -1,22 +1,29 @@
+const path = require("path");
+
 describe("HTML injection lifecycle", () => {
-  it("removes package-owned injection points on deactivation", async () => {
-    if (lumine.packages.getPackageLifecycleState("language-html") === "active") {
-      await lumine.packages.deactivatePackage("language-html");
-    }
+  it("restores one declarative injection per script after package reactivation", async () => {
+    await lumine.packages.activatePackage(
+      path.resolve(__dirname, "..", "..", "language-javascript"),
+    );
 
-    const registrations = [];
-    spyOn(lumine.grammars, "addInjectionPoint").and.callFake(() => {
-      const registration = { dispose: jasmine.createSpy("dispose") };
-      registrations.push(registration);
-      return registration;
-    });
+    const openScript = async () => {
+      await lumine.packages.activatePackage("language-html");
+      const editor = await lumine.workspace.open();
+      editor.setGrammar(lumine.grammars.grammarForScopeName("text.html.basic"));
+      editor.setText("<script>const value = 1;</script>");
+      await editor.languageMode.ready;
+      await editor.languageMode.atTransactionEnd();
+      const layers = editor.languageMode
+        .getAllInjectionLayers()
+        .filter((layer) => layer.grammar.scopeName === "source.js");
+      expect(layers.length).toBe(1);
+      expect(layers[0].tree.rootNode.hasError).toBe(false);
+      editor.destroy();
+    };
 
-    await lumine.packages.activatePackage("language-html");
-    expect(registrations.length).toBe(6);
-
+    await openScript();
     await lumine.packages.deactivatePackage("language-html");
-    for (const registration of registrations) {
-      expect(registration.dispose).toHaveBeenCalled();
-    }
+    expect(lumine.grammars.grammarForScopeName("text.html.basic")).toBeUndefined();
+    await openScript();
   });
 });

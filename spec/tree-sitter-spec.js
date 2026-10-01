@@ -10,11 +10,56 @@ describe("WASM Tree-sitter HTML grammars", () => {
     // EJS injects javascript into its directives; ERB injects ruby, which is not
     // bundled, so its directives stay unhighlighted here. The fixtures assert only
     // the scopes the embedded-template grammars own, so both cases are covered.
-    await lumine.packages.activatePackage("language-javascript");
+    await lumine.packages.activatePackage(
+      path.resolve(__dirname, "..", "..", "language-javascript"),
+    );
   });
 
   it("tokenizes HTML tags, attributes and values", async () => {
     await runGrammarTests(path.join(__dirname, "fixtures", "tree-sitter-html.html"), /<!--/, /-->/);
+  });
+
+  it("injects separate script and style bodies without including their tags", async () => {
+    await lumine.packages.activatePackage(path.resolve(__dirname, "..", "..", "language-css"));
+    const editor = await lumine.workspace.open();
+    editor.setGrammar(lumine.grammars.grammarForScopeName("text.html.basic"));
+    const text =
+      "<script>const first = 1;</script><script>const second = 2;</script><style>.card { color: red; }</style><script></script><style></style>";
+    editor.setText(text);
+    await editor.languageMode.ready;
+    await editor.languageMode.atTransactionEnd();
+    const layers = editor.languageMode.getAllInjectionLayers();
+    expect(layers.filter((layer) => layer.grammar.scopeName === "source.js").length).toBe(2);
+    expect(layers.filter((layer) => layer.grammar.scopeName === "source.css").length).toBe(1);
+    for (const [needle, scope] of [
+      ["first", "source.js"],
+      [".card", "source.css"],
+    ]) {
+      const point = editor.getBuffer().positionForCharacterIndex(text.indexOf(needle));
+      expect(editor.scopeDescriptorForBufferPosition(point).getScopesArray()).toContain(scope);
+    }
+    expect(editor.scopeDescriptorForBufferPosition([0, 2]).getScopesArray()).not.toContain(
+      "source.js",
+    );
+  });
+
+  it("parses code split across EJS directives as one JavaScript document", async () => {
+    const editor = await lumine.workspace.open();
+    editor.setGrammar(lumine.grammars.grammarForScopeName("text.html.ejs"));
+    editor.setText("<% if (ready) { %>\n<p>content</p>\n<% } %>");
+    await editor.languageMode.ready;
+    await editor.languageMode.atTransactionEnd();
+    const layers = editor.languageMode
+      .getAllInjectionLayers()
+      .filter((layer) => layer.grammar.scopeName === "source.js");
+    expect(layers.length).toBe(1);
+    expect(layers[0].tree.rootNode.hasError).toBe(false);
+    expect(editor.scopeDescriptorForBufferPosition([1, 1]).getScopesArray()).toContain(
+      "entity.name.tag.block.p.html",
+    );
+    expect(editor.scopeDescriptorForBufferPosition([1, 1]).getScopesArray()).not.toContain(
+      "source.js",
+    );
   });
 
   it("distinguishes both delimiters of empty quoted attributes", async () => {
