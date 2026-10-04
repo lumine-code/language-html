@@ -19,7 +19,8 @@
     "highlightsQuery": "html-highlights.scm",
     "injectionsQuery": "html-injections.scm",
     "foldsQuery": "html-folds.scm",
-    "indentsQuery": "html-indents.scm"
+    "indentsQuery": "html-indents.scm",
+    "tagsQuery": "html-tags.scm"
   },
   "fileTypes": ["htm", "html", "shtml", "xhtml"],
   "comments": {

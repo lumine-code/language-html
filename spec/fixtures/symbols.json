@@ -1,0 +1,16 @@
+{
+  "text.html.basic": {
+    "text": "<div id=\"primary\"><p>Anonymous</p></div>\n<a name='legacy'>Anchor</a>\n<input NAME=control />\n<p class=\"ordinary\">Text</p>\n<a href=\"#primary\">Link</a>\n<section id=\"\"></section>",
+    "symbols": [{ "name": "primary", "tag": "object" }, { "name": "legacy", "tag": "object" }, { "name": "control", "tag": "object" }],
+    "only": true,
+    "absent": ["div", "p", "ordinary", "#primary", "Anonymous", ""]
+  },
+  "text.html.ejs": {
+    "text": "<% if (ready) { %>\n<div id=\"ejs-target\">Body</div>\n<% } %>",
+    "symbols": [{ "name": "ejs-target", "tag": "object" }]
+  },
+  "text.html.erb": {
+    "text": "<% if ready %>\n<div id=\"erb-target\">Body</div>\n<% end %>",
+    "symbols": [{ "name": "erb-target", "tag": "object" }]
+  }
+}

@@ -8,6 +8,7 @@ HTML language support.
 - **Syntax highlighting**: full grammar coverage for HTML files.
 - **Snippets**: shortcuts for common tags and document scaffolding.
 - **Code folding**: collapse elements and comments.
+- **Document symbols**: navigate named `id` and `name` targets in HTML, including the HTML portions of EJS and ERB files.
 - **Comment toggling**: block comment support.
 
 ## Installation

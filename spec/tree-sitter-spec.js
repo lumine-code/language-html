@@ -3,6 +3,7 @@ const path = require("path");
 const { Point } = require("lumine");
 
 const HIGHLIGHTS_PATH = path.join(__dirname, "..", "grammars", "html-highlights.scm");
+const SYMBOL_FIXTURES = require("./fixtures/symbols.json");
 
 describe("WASM Tree-sitter HTML grammars", () => {
   beforeEach(async () => {
@@ -18,6 +19,31 @@ describe("WASM Tree-sitter HTML grammars", () => {
   it("tokenizes HTML tags, attributes and values", async () => {
     await runGrammarTests(path.join(__dirname, "fixtures", "tree-sitter-html.html"), /<!--/, /-->/);
   });
+
+  for (const [scopeName, fixture] of Object.entries(SYMBOL_FIXTURES)) {
+    it(`navigates useful named HTML targets in ${scopeName}`, async () => {
+      await lumine.packages.activatePackage(path.resolve(__dirname, "..", "..", "language-ruby"));
+      const symbolPackage = await lumine.packages.activatePackage(
+        path.resolve(__dirname, "..", "..", "symbol-tree-sitter"),
+      );
+      const provider = symbolPackage.mainModule.provideDocumentSymbolProvider();
+      const editor = await lumine.workspace.open();
+      editor.setGrammar(lumine.grammars.grammarForScopeName(scopeName));
+      editor.setText(fixture.text);
+      await editor.whenGrammarSettled();
+      expect(provider.canProvideDocumentSymbols(editor)).toBe(0.999);
+      const symbols = await provider.getDocumentSymbols(editor);
+      const namesAndTags = symbols.map(({ name, tag }) => ({ name, tag }));
+      if (fixture.only) expect(namesAndTags).toEqual(fixture.symbols);
+      for (const expected of fixture.symbols) expect(namesAndTags).toContain(expected);
+      for (const absent of fixture.absent || [])
+        expect(symbols.map(({ name }) => name)).not.toContain(absent);
+      for (const symbol of symbols) {
+        expect(symbol.range.containsPoint(symbol.position)).toBe(true);
+        expect(editor.getTextInBufferRange(symbol.range)).toContain(symbol.name);
+      }
+    });
+  }
 
   it("injects separate script and style bodies without including their tags", async () => {
     await lumine.packages.activatePackage(path.resolve(__dirname, "..", "..", "language-css"));
