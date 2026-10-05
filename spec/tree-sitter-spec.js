@@ -4,6 +4,10 @@ const { Point } = require("lumine");
 
 const HIGHLIGHTS_PATH = path.join(__dirname, "..", "grammars", "html-highlights.scm");
 const SYMBOL_FIXTURES = require("./fixtures/symbols.json");
+const specPackagePath = (name) => {
+  const sibling = path.resolve(__dirname, "..", "..", name);
+  return fs.existsSync(path.join(sibling, "package.json")) ? sibling : name;
+};
 
 describe("WASM Tree-sitter HTML grammars", () => {
   beforeEach(async () => {
@@ -22,9 +26,9 @@ describe("WASM Tree-sitter HTML grammars", () => {
 
   for (const [scopeName, fixture] of Object.entries(SYMBOL_FIXTURES)) {
     it(`navigates useful named HTML targets in ${scopeName}`, async () => {
-      await lumine.packages.activatePackage(path.resolve(__dirname, "..", "..", "language-ruby"));
+      await lumine.packages.activatePackage(specPackagePath("language-ruby"));
       const symbolPackage = await lumine.packages.activatePackage(
-        path.resolve(__dirname, "..", "..", "symbol-tree-sitter"),
+        specPackagePath("symbol-tree-sitter"),
       );
       const provider = symbolPackage.mainModule.provideDocumentSymbolProvider();
       const editor = await lumine.workspace.open();
