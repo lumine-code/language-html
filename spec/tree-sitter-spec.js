@@ -35,8 +35,15 @@ describe("WASM Tree-sitter HTML grammars", () => {
       editor.setGrammar(lumine.grammars.grammarForScopeName(scopeName));
       editor.setText(fixture.text);
       await editor.whenGrammarSettled();
-      expect(provider.canProvideDocumentSymbols(editor)).toBe(0.999);
-      const symbols = await provider.getDocumentSymbols(editor);
+      expect(
+        (
+          await provider.getDocumentSymbolSources(editor, { signal: new AbortController().signal })
+        )[0].score,
+      ).toBe(0.999);
+      const symbols = await provider.getDocumentSymbols(editor, {
+        sourceId: "symbol-tree-sitter",
+        signal: new AbortController().signal,
+      });
       const namesAndTags = symbols.map(({ name, tag }) => ({ name, tag }));
       if (fixture.only) expect(namesAndTags).toEqual(fixture.symbols);
       for (const expected of fixture.symbols) expect(namesAndTags).toContain(expected);
