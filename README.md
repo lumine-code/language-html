@@ -2,6 +2,8 @@
 
 HTML language support.
 
+Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/language-html`).
+
 ## Features
 
 - **Grammars**: provides Tree-sitter grammars built from [tree-sitter-embedded-template](https://github.com/tree-sitter/tree-sitter-embedded-template) and [tree-sitter-html](https://github.com/tree-sitter/tree-sitter-html).
