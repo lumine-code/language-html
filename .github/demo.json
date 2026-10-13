@@ -1,0 +1,16 @@
+{
+  "title": "language-html",
+  "description": "HTML syntax highlighting in the editor.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "d6a67b102780daa5cf214011985f799eadcbaf79",
+  "mode": "normal",
+  "fontSettings": "default",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "HTML syntax highlighting at the default editor font size.",
+      "width": 1100,
+      "height": 494
+    }
+  ]
+}

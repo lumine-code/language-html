@@ -13,6 +13,8 @@ Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/l
 - **Document symbols**: navigate named `id` and `name` targets in HTML, including the HTML portions of EJS and ERB files.
 - **Comment toggling**: block comment support.
 
+![HTML syntax highlighting at the default editor font size.](.github/demo.png)
+
 ## Installation
 
 To install `language-html` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/language-html`.
