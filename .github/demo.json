@@ -1,16 +1,61 @@
 {
   "title": "language-html",
-  "description": "HTML syntax highlighting in the editor.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "d6a67b102780daa5cf214011985f799eadcbaf79",
+  "description": "HTML syntax highlighting at the default editor font size.",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "12d2c7540d7e4a49602a8d00a93d3fd43811e876",
+  "themeSourceRevision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
   "mode": "normal",
   "fontSettings": "default",
+  "scenario": "demo.js",
+  "recipeHash": "cb8b079e7c6bc9c281a70b555d887d4550f01c9e597a00dcece0e271da3f802f",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 494 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "c4d7a05fe6960ae6fb041981d6cf13e9c0286b17",
+      "dirty": true,
+      "workingTreeHash": "af0ec098e764416df9522f3c6e555050b520e4700da382b2b983b2ff3742bd0a"
+    },
+    "package": {
+      "revision": "12d2c7540d7e4a49602a8d00a93d3fd43811e876",
+      "dirty": true,
+      "workingTreeHash": "b940bab4c262c81640b1e145efa3a4f8a26383af8fcdd8c343864f68970bada5"
+    },
+    "language-html": {
+      "revision": "12d2c7540d7e4a49602a8d00a93d3fd43811e876",
+      "dirty": true,
+      "workingTreeHash": "b940bab4c262c81640b1e145efa3a4f8a26383af8fcdd8c343864f68970bada5"
+    },
+    "one-theme": {
+      "revision": "14a69683b0e3238e2bc128fbfae3866c1e4ee9c6",
+      "dirty": true,
+      "workingTreeHash": "50ec2f83a6347dd8113870992ec4eb2be4014f3d9e12213c2f51b543f1eca793"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "tree-sitter-html.html",
+      "sha256": "bc07d3c9ecdc4a2570afd3d9cedab624caab9a6bbcf2f5759c4e90e6e94a15a2"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "HTML syntax highlighting at the default editor font size.",
       "width": 1100,
-      "height": 494
+      "height": 494,
+      "sha256": "66a44f9fafe98eb952856883cca873a2d4e0bde2dd301da4ffd4cfacb8359a30"
     }
   ]
 }
