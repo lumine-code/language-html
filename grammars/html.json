@@ -14,7 +14,7 @@
   ],
   "treeSitter": {
     "parserSource": "github:tree-sitter/tree-sitter-html#v0.23.2",
-    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "html.wasm",
     "highlightsQuery": "html-highlights.scm",
     "injectionsQuery": "html-injections.scm",

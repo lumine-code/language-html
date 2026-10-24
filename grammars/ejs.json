@@ -7,7 +7,7 @@
   "injectionNames": ["ejs"],
   "treeSitter": {
     "parserSource": "github:tree-sitter/tree-sitter-embedded-template#v0.25.0",
-    "wasmBuildTool": "tree-sitter-cli#v0.27.0",
+    "wasmBuildTool": "tree-sitter-cli#v0.27.1",
     "grammar": "embedded-template.wasm",
     "highlightsQuery": "ejs-highlights.scm",
     "injectionsQuery": "ejs-injections.scm",
