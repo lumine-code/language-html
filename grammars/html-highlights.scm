@@ -105,6 +105,18 @@
   (#is? test.last true))
 
 
+; A complete URL in a URI attribute is authored as one destination,
+; including spaces, terminal punctuation and character references.
+((attribute
+  (attribute_name) @_IGNORE_.uri-attribute
+  [
+    (attribute_value) @markup.underline.link.html
+    (quoted_attribute_value
+      (attribute_value) @markup.underline.link.html)
+  ])
+  (#match? @_IGNORE_.uri-attribute "^([hH][rR][eE][fF]|[sS][rR][cC]|[aA][cC][tT][iI][oO][nN]|[fF][oO][rR][mM][aA][cC][tT][iI][oO][nN]|[pP][oO][sS][tT][eE][rR]|[cC][iI][tT][eE]|[dD][aA][tT][aA])$")
+  (#match? @markup.underline.link.html "^([hH][tT][tT][pP][sS]?://|[mM][aA][iI][lL][tT][oO]:)"))
+
 ; Prevent quoted attribute values from having `string.unquoted` applied.
 (quoted_attribute_value
   (attribute_value) @_IGNORE_
