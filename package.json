@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "files": [
     "grammars",
+    "lib",
     "settings",
     "snippets",
     "spec",
@@ -42,7 +43,9 @@
   "specPackages": [
     "language-hyperlink",
     "language-ruby",
-    "symbol-tree-sitter"
+    "symbol-tree-sitter",
+    "language-css",
+    "language-javascript"
   ],
   "overrides": {
     "eslint@^10.14.0": {

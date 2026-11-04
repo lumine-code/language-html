@@ -12,6 +12,9 @@
     "highlightsQuery": "ejs-highlights.scm",
     "injectionsQuery": "ejs-injections.scm",
     "foldsQuery": "ejs-folds.scm",
-    "indentsQuery": "ejs-indents.scm"
+    "indentsQuery": "ejs-indents.scm",
+    "contentEditPolicies": {
+      "content-words": "../lib/content-edit-policy.js"
+    }
   }
 }

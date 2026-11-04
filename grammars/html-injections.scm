@@ -1,10 +1,12 @@
 ((script_element
   (raw_text) @injection.content) @injection.owner
-  (#set! injection.language "javascript"))
+  (#set! injection.language "javascript")
+  (#set! injection.content-edit-policy "content-words"))
 
 ((style_element
   (raw_text) @injection.content) @injection.owner
-  (#set! injection.language "css"))
+  (#set! injection.language "css")
+  (#set! injection.content-edit-policy "content-words"))
 
 ((comment) @injection.owner @injection.content
   (#set! injection.language "hyperlink")

@@ -20,7 +20,10 @@
     "injectionsQuery": "html-injections.scm",
     "foldsQuery": "html-folds.scm",
     "indentsQuery": "html-indents.scm",
-    "tagsQuery": "html-tags.scm"
+    "tagsQuery": "html-tags.scm",
+    "contentEditPolicies": {
+      "content-words": "../lib/content-edit-policy.js"
+    }
   },
   "fileTypes": ["htm", "html", "shtml", "xhtml"],
   "comments": {
